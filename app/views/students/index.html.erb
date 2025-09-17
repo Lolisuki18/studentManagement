@@ -1,0 +1,22 @@
+<%# <%= debug @students %>   
+<%#   
+ Đây là ERB -> Embedded Ruby 
+ -> It allow we can write Ruby code in HTML file 
+ -> It look like JSP/Servlet in java
+
+and  <%=  tag tells ERB to execute the Ruby code inside and output the return value 
+-> It take a value in Ruby code and converts it to YAML, and outputs the YAML
+
+-The debug helper prints out variables in YAML format to help with debugging
+
+
+%>
+<h1>Students</h1>
+<%= link_to "New Students", new_student_path %>
+<div id="students-list">
+  <% @students.each do |student| %>
+     <div>
+      <%= link_to student.full_name, student %>
+    </div>
+  <% end %>
+</div>

@@ -1,0 +1,63 @@
+<h1>New student</h1>
+<%# 
+-We use form_with to create a form for a model object
+helper to generate an HTML form to create products. 
+This helper uses a form builder to handle things like CSRF tokens,
+generating the URL based upon the model: provided, and even tailoring the
+submit button text to the model.
+ %>
+<%= form_with model: @student do |form| %>
+  <div>
+    <%= form.label :full_name %>
+    <%= form.text_field :full_name %>
+  </div>
+
+  <div>
+    <%= form.label :age %>
+    <%= form.text_field :age %>
+  </div>
+
+  <div>
+    <%= form.label :student_code %>
+    <%= form.text_field :student_code %>
+  </div>
+
+  <div>
+    <%= form.label :email %>
+    <%= form.text_field :email %>
+  </div>
+
+
+  <div>
+    <%= form.label :phone %>
+    <%= form.text_field :phone %>
+  </div>
+
+
+  <div>
+    <%= form.label :major %>
+    <%= form.text_field :major %>
+  </div>
+
+  
+  <div>
+    <%= form.label :address %>
+    <%= form.text_field :address %>
+  </div>
+
+
+   <div>
+    <%= form.label :birthday %>
+    <%= form.date_field :birthday %>
+  </div>
+
+   <div>
+    <%= form.label :active %>
+    <%= form.check_box :active %>
+  </div>
+
+
+  <div>
+    <%= form.submit %>
+  </div>
+<% end %>
