@@ -2,6 +2,7 @@
 <% cache @student do %>
   <h1><%= @student.full_name %></h1>
     <%= @student.description %>
+<%= image_tag @student.featured_image if @student.featured_image.attached? %>
 
 <% end %>
 

@@ -16,5 +16,10 @@ class Student < ApplicationRecord
   #-> such as bold, italics, links, images, and other multimedia elements.
   #-> It allows users to create and edit content with various styles and formatting options.
 
-  
+  has_one_attached :featured_image
+  # It is used to associate a single file, such as an image or document
+  # , with a record in the Student model.
+  # This allows each student to have one featured image attached to their record.
+  #It use Active Storage to handle file uploads and attachments.
+  #Need to add :featured_image to strong parameters in controller
 end

@@ -75,7 +75,17 @@ class StudentsController < ApplicationController
     end
 
     def student_params #Strong Parameters
-      params.expect(student: [ :full_name, :age, :student_code, :email, :phone, :major, :address, :birthday, :active, :description ])
+      params.expect(student: [ :full_name,
+       :age,
+       :student_code,
+       :email,
+       :phone,
+       :major,
+       :address, 
+       :birthday, 
+       :active,
+       :description,
+       :featured_image])
     end
     #The action create is hanlding the data submission
     #-> this data need to filter to security
