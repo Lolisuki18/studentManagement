@@ -27,5 +27,15 @@
 #       "yes": yup
 #       enabled: "ON"
 
+#
 en:
   hello: "Hello world"
+  students:
+    index:
+      title: "Students List"
+
+vi:
+  hello: "Xin chào"
+  students:
+    index:
+      title: "Danh sách học sinh"

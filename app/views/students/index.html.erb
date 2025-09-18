@@ -12,6 +12,20 @@ and  <%=  tag tells ERB to execute the Ruby code inside and output the return va
 
 %>
 <h1>Students</h1>
+<h1><%= t ".title" %></h1>
+<%# ## t ".title" use for I18n (Internationalization)
+-> It allow we can translate the text in different language
+-> It look for the translation of the key ".title" in the locale file
+-> The locale file is located in config/locales directory
+-> The locale file is a YAML file that contains the translations for different languages
+-> The locale file is named after the language code, for example en.yml for English, vi.yml for Vietnamese
+-> The locale file contains a nested structure of keys and values, where the keys are the translation keys and the values are the translations
+-> The key ".title" is a relative key, which means it is relative to the current view file
+-> In this case, the current view file is app/views/students/index.html.erb
+-> So the full key for the translation is "students.index.title"
+-> In the locale file, we can define the translation for this key
+-> For example, in config/locales/en.yml, we can have: %>
+
 <%= link_to "New Students", new_student_path if authenticated?%>
 <%# if authenticated? use for check the authetiaction 
   -> we can see this title or link if we have authentication
