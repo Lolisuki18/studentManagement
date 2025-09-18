@@ -22,4 +22,8 @@ class Student < ApplicationRecord
   # This allows each student to have one featured image attached to their record.
   #It use Active Storage to handle file uploads and attachments.
   #Need to add :featured_image to strong parameters in controller
+
+  validates :class_count, numericality: { greater_than_or_equal_to: 0 }
+  #-> we use stock 
+
 end

@@ -85,7 +85,8 @@ class StudentsController < ApplicationController
        :birthday, 
        :active,
        :description,
-       :featured_image])
+       :featured_image,
+       :class_count])
     end
     #The action create is hanlding the data submission
     #-> this data need to filter to security

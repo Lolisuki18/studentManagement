@@ -16,12 +16,15 @@ This comes in handy rendering lists of items like an index page.
 
 <%= form_with model: student do |form| %>
 
-
+  <div>
+    <%= form.label :class_count, style: "display: block" %>
+    <%= form.number_field :class_count %>
+  </div>
   <div>
     <%= form.label :featured_image, style: "display: block" %>
     <%= form.file_field :featured_image, accept: "image/*" %>
   </div>
-  
+
   <div>
     <%= form.label :description, style: "display: block" %>
     <%= form.rich_text_area :description %>
