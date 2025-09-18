@@ -26,4 +26,9 @@ class Student < ApplicationRecord
   validates :class_count, numericality: { greater_than_or_equal_to: 0 }
   #-> we use stock 
 
+  has_many :courses
+  #The relationship between Student and Course models
+  #-> A student can enroll in many courses.
+  
+
 end

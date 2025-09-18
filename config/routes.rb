@@ -46,8 +46,10 @@ Rails.application.routes.draw do
   #-> Rails will auto generate all of the router 
   # we can use the command "rails router" to check what router we have 
 
-  resources :students
-
+  # resources :students
+  resources :students do
+    resources :courses, only: [ :create ]
+  end
   root "students#index" #-> in mean we go website with path"/" it will direct to this page
   #-> app/views/students/index.html.erb
   #-> now when you go to localhost:3000 it will direct to students#index
