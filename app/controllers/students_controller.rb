@@ -1,5 +1,10 @@
 class StudentsController < ApplicationController
   
+  allow_unauthenticated_access only: %i[index show]
+  #-> it means we allows unauthenticated access to 
+  #index and show action
+  #-> other action need authentication
+
   before_action :set_student, only: %i[ show edit update destroy ]
   #-> before_action allows share code  between actions and run before call of action
 

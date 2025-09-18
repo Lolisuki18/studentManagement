@@ -1,5 +1,11 @@
 <h1><%= @student.full_name %></h1>
 
 <%= link_to "Back", "/" %>
+<% if authenticated? %>
 <%= link_to "Edit", edit_student_path(@student) %>
 <%= button_to "Delete", @product, method: :delete, data: { turbo_confirm: "Are you sure to delete ?" } %>
+<% end %>
+<%# if authenticated? use for check the authetiaction 
+  -> we can see link  if we have authentication
+  -> It mean we need login first to see  link
+%>

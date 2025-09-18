@@ -12,7 +12,12 @@ and  <%=  tag tells ERB to execute the Ruby code inside and output the return va
 
 %>
 <h1>Students</h1>
-<%= link_to "New Students", new_student_path %>
+<%= link_to "New Students", new_student_path if authenticated?%>
+<%# if authenticated? use for check the authetiaction 
+  -> we can see this title or link if we have authentication
+  -> It mean we need login first to see this title or link
+%>
+<%= link_to "Login" , new_session_path unless authenticated?%>
 <div id="students-list">
   <% @students.each do |student| %>
      <div>
