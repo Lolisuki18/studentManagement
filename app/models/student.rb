@@ -8,5 +8,13 @@ class Student < ApplicationRecord
   # ->ensures that each student_code value is unique 
   # -> Don't have any record have the same student_code value
   
+  has_rich_text :description
+  #Need to add :description to strong parameters in controller
+  #it means the Student model has a rich text attribute named description.
+  #What is rick text ? 
+  #Rick text is a way to store and display formatted text content,
+  #-> such as bold, italics, links, images, and other multimedia elements.
+  #-> It allows users to create and edit content with various styles and formatting options.
 
+  
 end

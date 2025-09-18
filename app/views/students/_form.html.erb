@@ -15,6 +15,12 @@ This comes in handy rendering lists of items like an index page.
 %>
 
 <%= form_with model: student do |form| %>
+
+  <div>
+    <%= form.label :description, style: "display: block" %>
+    <%= form.rich_text_area :description %>
+  </div>
+
   <div>
     <%= form.label :full_name %>
     <%= form.text_field :full_name %>
