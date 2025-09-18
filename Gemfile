@@ -7,7 +7,7 @@ gem "propshaft"
 # Use sqlite3 as the database for Active Record
 # gem "sqlite3", ">= 2.1"
 
-#Sử dụng SQL server 
+# Sử dụng SQL server
 gem "tiny_tds"
 gem "activerecord-sqlserver-adapter", "~>8.0"
 # Use the Puma web server [https://github.com/puma/puma]
