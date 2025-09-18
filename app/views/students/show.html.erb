@@ -1,4 +1,24 @@
-<h1><%= @student.full_name %></h1>
+
+<% cache @student do %>
+  <h1><%= @student.full_name %></h1>
+<% end %>
+
+<%# 
+- cache @student do : Use caching to save a block of HTML that depends on the @student object.
+-> if @student don't change -> Rails will use the cached version of 
+the block instead of re-rendering it. -> it help improve performace 
+
+-Example : 
+if you have 1000 student and you want show all student in index page
+*if you don't use cache -> Rails will render all 1000 student every time
+->Rails wil query database again to get 1000 student every time you reload page
+-> it take a lot of time to render page
+
+*if you use cache -> Rails will query database only one time to get 1000 student
+-> Rails will save this HTML in cache -> and in the next time if the @student don't change
+->You reload page -> Rails will use the cached version of the HTML and don't need query again
+ %>
+
 
 <%= link_to "Back", "/" %>
 <% if authenticated? %>
