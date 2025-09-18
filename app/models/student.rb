@@ -1,4 +1,6 @@
 class Student < ApplicationRecord
+  include Notifications
+
   #Validation
   # prevents saving a record without a full_name
   #-> it means the full_name can't be nil or an empty string, it is required.
@@ -26,9 +28,28 @@ class Student < ApplicationRecord
   validates :class_count, numericality: { greater_than_or_equal_to: 0 }
   #-> we use stock 
 
-  has_many :courses
+  # has_many :courses
   #The relationship between Student and Course models
   #-> A student can enroll in many courses.
-  
 
-end
+  # after_update_commit :notify_course, if: :back_in_stock?
+  # after_update_commit:
+  #-> This callback is triggered after a record is updated and the changes are committed to the database.
+  #-> It means it will call notify_course action if back_in_stock action return true
+
+  #  def back_in_stock?
+  #   inventory_count_previously_was.zero? && inventory_count > 0
+  #   #inventory_count_previously_was is a method provided by Active Record
+  #   #-> it returns the previous value of the inventory_count attribute before the last update.
+  #   #-> it checks if the inventory_count was zero before the update and is now greater than zero.
+  #   #-> If both conditions are true, it means the product has come back in stock.
+  #  end
+  # end
+
+  # def notify_subscribers
+  #   # Notify all subscribers that the product is back in stock
+  #   subscribers.each do |subscriber|
+  #     StudentMailer.with(student: self, course: course).in_course.deliver_later
+  #   end
+  end
+
