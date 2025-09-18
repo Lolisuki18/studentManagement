@@ -1,0 +1,71 @@
+<%# If the file have a name start like _form.html.erb it means it file is partial 
+-Partial file is a view file you can use in other view file 
+-> it help to reduce the code duplication
+-The syntax we you to make a name a file is start with _(underscore)
+-Partial file is use to render a form in new and edit view file
+-We also want to replace any instance variables with a local variable, 
++which we can define when we render the partial. 
++We'll do this by replacing @student with student.
+
+Using local variables allows partials to be reused multiple times 
+on the same page with a different value each time. 
+This comes in handy rendering lists of items like an index page.
+
+
+%>
+
+<%= form_with model: student do |form| %>
+  <div>
+    <%= form.label :full_name %>
+    <%= form.text_field :full_name %>
+  </div>
+
+  <div>
+    <%= form.label :age %>
+    <%= form.text_field :age %>
+  </div>
+
+  <div>
+    <%= form.label :student_code %>
+    <%= form.text_field :student_code %>
+  </div>
+
+  <div>
+    <%= form.label :email %>
+    <%= form.text_field :email %>
+  </div>
+
+
+  <div>
+    <%= form.label :phone %>
+    <%= form.text_field :phone %>
+  </div>
+
+
+  <div>
+    <%= form.label :major %>
+    <%= form.text_field :major %>
+  </div>
+
+  
+  <div>
+    <%= form.label :address %>
+    <%= form.text_field :address %>
+  </div>
+
+
+   <div>
+    <%= form.label :birthday %>
+    <%= form.date_field :birthday %>
+  </div>
+
+   <div>
+    <%= form.label :active %>
+    <%= form.check_box :active %>
+  </div>
+
+
+  <div>
+    <%= form.submit %>
+  </div>
+<% end %>

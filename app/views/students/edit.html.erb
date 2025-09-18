@@ -1,0 +1,14 @@
+<%= render "form" , student: @student%>
+<%# 
+
+Cách hoạt động:
+Rails tìm partial file: _form.html.erb trong cùng thư mục (app/views/students/)
+Truyền local variable: student: @student tạo ra một biến local tên student với giá trị @student
+Trong _form.html.erb: Có thể sử dụng biến student thay vì @student 
+
+%>
+<%= link_to "Cancel" , @student%>
+<!-- Rails tự động convert thành: -->
+<%# <%= link_to "Cancel", student_path(@student) %>
+<!-- Tạo ra URL: /students/1 (nếu @student.id = 1) -->
+<!-- Route /students/:id => StudentsController#show -->

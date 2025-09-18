@@ -1,6 +1,6 @@
 class StudentsController < ApplicationController
   
-  before_action :set_student, only: %i[ show edit update  ]
+  before_action :set_student, only: %i[ show edit update destroy ]
   #-> before_action allows share code  between actions and run before call of action
 
   # %i is a shorthand for an array of symbols in Ruby.
@@ -24,7 +24,7 @@ class StudentsController < ApplicationController
   end
 
    def create
-    # @student = Student.new(student_params)-> use before_action :set_student
+     @student = Student.new(student_params)
     if @student.save # tells Active Record to run validations and save the record to the database.
       redirect_to @student # redirect to the show page of the newly created student
     else
@@ -44,8 +44,15 @@ class StudentsController < ApplicationController
     else
       render :edit, status: :unprocessable_entity
     end
-  
+  end
     
+  def destroy
+    # We use before_action :set_student
+    #-> it stand for @student = Student.find(params[:id])
+    #We don't need to write again
+    @student.destroy
+    redirect_to students_path
+  end
 
     #We always need an existing database record ->  @student = Student.find(params[:id])
      # in show, edit , update ,.... we can deduplicate this into "before_action"
