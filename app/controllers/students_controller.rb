@@ -33,7 +33,7 @@ class StudentsController < ApplicationController
 
    def create
      @student = Student.new(student_params)
-    
+
     if @student.save # tells Active Record to run validations and save the record to the database.
       # redirect_to @student # redirect to the show page of the newly created student
        render json: @student, status: :created #returen json to client
@@ -62,8 +62,11 @@ class StudentsController < ApplicationController
     # We use before_action :set_student
     # -> it stand for @student = Student.find(params[:id])
     # We don't need to write again
-    @student.destroy
-    render json: { message: "Student deleted successfully" }, status: :ok
+   if @student.update(active: false)
+      render json: { message: "Student deactivated successfully" }, status: :ok
+   else
+      render json: { errors: @student.errors }, status: :unprocessable_entity
+    end
   end
 
   # We always need an existing database record ->  @student = Student.find(params[:id])
