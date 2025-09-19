@@ -12,27 +12,33 @@ class StudentsController < ApplicationController
   # only: %i[ show edit update  ]
   # only: [:show, :edit, :update]
 
+  #
   def index
     @students = Student.all # -> instance variable -> variables that start with an @
     # -> this variable can share the data in the view
+    render json: @students
   end
 
   def show
     # @student = Student.find(params[:id]) -> use before_action :set_student
     # To query in the database we use params to access the request parameters
     # in this case we use the :id from route /students/:id
+    render json: @student
   end
 
   def new
     @student = Student.new
+    render json: @student
   end
 
    def create
      @student = Student.new(student_params)
+    
     if @student.save # tells Active Record to run validations and save the record to the database.
-      redirect_to @student # redirect to the show page of the newly created student
+      # redirect_to @student # redirect to the show page of the newly created student
+       render json: @student, status: :created #returen json to client
     else
-      render :new, status: :unprocessable_entity
+      render json: { errors: @student.errors }, status: :unprocessable_entity
     end
   end
 
@@ -44,9 +50,11 @@ class StudentsController < ApplicationController
   def update
     #  @student = Student.new(student_params)-> use before_action :set_student
     if @student.update(student_params)
-      redirect_to @student
+       render json: @student, status: :ok
     else
-      render :edit, status: :unprocessable_entity
+      # render :edit, status: :unprocessable_entity
+      render json: { errors: @student.errors }, status: :unprocessable_entity
+      #render json to client
     end
   end
 
@@ -55,7 +63,7 @@ class StudentsController < ApplicationController
     # -> it stand for @student = Student.find(params[:id])
     # We don't need to write again
     @student.destroy
-    redirect_to students_path
+    render json: { message: "Student deleted successfully" }, status: :ok
   end
 
   # We always need an existing database record ->  @student = Student.find(params[:id])
@@ -68,7 +76,9 @@ class StudentsController < ApplicationController
 
   private
     def set_student # use in before_action in a head
-      @student = Student.find(params[:id])
+       @student = Student.find(params[:id])
+    rescue ActiveRecord::RecordNotFound
+      render json: { error: "Student not found" }, status: :not_found
     end
 
     def student_params # Strong Parameters
