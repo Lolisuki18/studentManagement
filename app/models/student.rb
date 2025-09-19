@@ -1,5 +1,5 @@
 class Student < ApplicationRecord
-  include Notifications
+  # include Notifications
 
   # Validation
   # prevents saving a record without a full_name
@@ -25,7 +25,7 @@ class Student < ApplicationRecord
   # It use Active Storage to handle file uploads and attachments.
   # Need to add :featured_image to strong parameters in controller
 
-  validates :class_count, numericality: { greater_than_or_equal_to: 0 }
+  # validates :class_count, numericality: { greater_than_or_equal_to: 0 }
   # -> we use stock
 
   # has_many :courses

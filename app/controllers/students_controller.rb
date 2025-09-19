@@ -1,5 +1,5 @@
 class StudentsController < ApplicationController
-  allow_unauthenticated_access only: %i[index show]
+  allow_unauthenticated_access only: %i[index show create update destroy]
   # -> it means we allows unauthenticated access to
   # index and show action
   # -> other action need authentication
@@ -78,13 +78,13 @@ class StudentsController < ApplicationController
   # - > this good for DRY ( Don't Reapeat Yourself)
 
   private
-    def set_student # use in before_action in a head
+    def set_student
        @student = Student.find(params[:id])
     rescue ActiveRecord::RecordNotFound
       render json: { error: "Student not found" }, status: :not_found
     end
 
-    def student_params # Strong Parameters
+    def student_params
       params.expect(student: [ :full_name,
        :age,
        :student_code,
@@ -95,8 +95,9 @@ class StudentsController < ApplicationController
        :birthday,
        :active,
        :description,
-       :featured_image,
-       :class_count ])
+       :featured_image
+       # Đã xóa :class_count
+       ])
     end
   # The action create is hanlding the data submission
   # -> this data need to filter to security
